@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.lof-blue {
+	background-color: #161269;
+}
+
+.lof-red {
+	background-color: #d90d00;
+}
+
+.btn:hover {
+	background-color: white;
+	color: #d90d00;
+	border: 1px solid #d90d00;
+}
