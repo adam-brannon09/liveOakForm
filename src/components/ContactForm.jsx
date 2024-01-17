@@ -1,43 +1,81 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Header from "./Header"
 import { useNavigate } from "react-router-dom"
+import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import { db } from "../firebase.config"
+
 
 
 
 function ContactForm() {
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [fullName, setFullName] = useState("")
-    const [email, setEmail] = useState("")
-    const [phone, setPhone] = useState("")
-    const [streetAddress, setStreetAddress] = useState("")
-    const [city, setCity] = useState("")
-    const [state, setState] = useState("")
-    const [zipCode, setZipCode] = useState("")
-    const [plan, setPlan] = useState("")
-    const [comment, setComment] = useState("")
-    const [businessOrResidential, setBusinessOrResidential] = useState("")
+    
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        streetAddress: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        comment: "",
+        businessOrResidential: "",
+        plan: "",
+    })
 
+    const {
+        firstName,
+        lastName,
+        email,
+        phone,
+        streetAddress,
+        city,
+        state,
+        zipCode,
+        comment,
+        businessOrResidential,
+        plan,
+    } = formData
 
 
     const navigate = useNavigate()
+    //set form data
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log("First Name: " + firstName)
-        console.log("Last Name: " + lastName)
-        console.log("Full Name: " + fullName)
-        console.log("Email: " + email)
-        console.log("Phone: " + phone)
-        console.log("Street Address: " + streetAddress)
-        console.log("City: " + city)
-        console.log("State: " + state)
-        console.log("Zip Code: " + zipCode)
-        console.log("Business or Residential: " + businessOrResidential)
-        console.log("Plan: " + plan)
-        console.log("Comment: " + comment)
-        navigate("/confirmation")
+        if (
+            !firstName ||
+            !lastName ||
+            !email ||
+            !phone ||
+            !streetAddress ||
+            !city ||
+            !state ||
+            !zipCode ||
+            !businessOrResidential ||
+            !plan
+        ) {
+            alert("Please fill out all fields")
+            return
+        } else{
+          const formDataCopy = { 
+            ...formData ,
+          }
+          const docRef = await addDoc(collection(db, "leads"), formDataCopy)
+          setFormData({...formData, firstName: "", lastName: "", email: "", phone: "", streetAddress: "", city: "", state: "", zipCode: "", comment: "", businessOrResidential: "", plan: ""})
+          console.log("Document submitted successfully")
+        }
+        
+        // navigate("/confirmation")
+
     }
+
+    
+
+    
 
 
     return (
@@ -54,7 +92,7 @@ function ContactForm() {
                             placeholder="First Name"
                             className="input input-bordered rounded-none w-full max-w-xs mb-6"
                             value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
+                            onChange={handleChange}
 
                         />
                         <span className="label-text text-white text-xl">Last Name</span>
@@ -64,10 +102,7 @@ function ContactForm() {
                             placeholder="Last Name"
                             className="input input-bordered rounded-none w-full max-w-xs mb-6"
                             value={lastName}
-                            onChange={(e) => {
-                                setLastName(e.target.value);
-                                setFullName(firstName + " " + e.target.value)
-                            }}
+                            onChange={handleChange}
                         />
                         <span className="label-text text-white text-xl">E-Mail Address</span>
                         <input type="email"
@@ -76,7 +111,7 @@ function ContactForm() {
                             placeholder="Email"
                             className="input input-bordered rounded-none w-full max-w-xs mb-6"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={handleChange}
                         />
                         <span className="label-text text-white text-xl">Phone</span>
                         <input type="tel"
@@ -85,7 +120,7 @@ function ContactForm() {
                             placeholder="Phone Number"
                             className="input input-bordered rounded-none w-full max-w-xs"
                             value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            onChange={handleChange}
                         />
 
 
@@ -99,7 +134,7 @@ function ContactForm() {
                             placeholder="Street Address"
                             className="input input-bordered rounded-none w-full max-w-xs mb-6"
                             value={streetAddress}
-                            onChange={(e) => setStreetAddress(e.target.value)}
+                            onChange={handleChange}
                         />
                         <span className="label-text text-white text-xl">City</span>
                         <input type="text"
@@ -108,7 +143,7 @@ function ContactForm() {
                             placeholder="City"
                             className="input input-bordered rounded-none w-full max-w-xs mb-6"
                             value={city}
-                            onChange={(e) => setCity(e.target.value)}
+                            onChange={handleChange}
                         />
                         <span className="label-text text-white text-xl">State</span>
                         <input type="text"
@@ -117,7 +152,7 @@ function ContactForm() {
                             placeholder="State"
                             className="input input-bordered rounded-none w-full max-w-xs mb-6"
                             value={state}
-                            onChange={(e) => setState(e.target.value)}
+                            onChange={handleChange}
                         />
                         <span className="label-text text-white text-xl">Zip Code</span>
                         <input type="text"
@@ -126,7 +161,7 @@ function ContactForm() {
                             placeholder="Zip Code"
                             className="input input-bordered rounded-none w-full max-w-xs mb-6"
                             value={zipCode}
-                            onChange={(e) => setZipCode(e.target.value)}
+                            onChange={handleChange}
                         />
 
                     </section>
@@ -139,7 +174,7 @@ function ContactForm() {
                             cols="50"
                             rows="7"
                             value={comment}
-                            onChange={(e) => setComment(e.target.value)}
+                            onChange={handleChange}
                         >
                         </textarea>
                         <br />
@@ -150,7 +185,7 @@ function ContactForm() {
                             name="businessOrResidential"
                             value={businessOrResidential}
                             className="mt-2 h-8"
-                            onChange={(e) => setBusinessOrResidential(e.target.value)}>
+                            onChange={handleChange}>
                             <option value="">Select One</option>
                             <option value="Residential">Residential</option>
                             <option value="Business">Business</option>
@@ -167,7 +202,7 @@ function ContactForm() {
                                     id="plan"
                                     value={plan}
                                     className="mt-2 h-8"
-                                    onChange={(e) => setPlan(e.target.value)}>
+                                    onChange={handleChange}>
                                     <option value="">Select A Plan</option>
                                     <option value="500 Mbps">Fiber 500 Mbps</option>
                                     <option value="2 Gbps">Fiber 2 Gbps</option>
@@ -182,7 +217,7 @@ function ContactForm() {
                                     id="plan"
                                     value={plan}
                                     className="mt-2 h-8"
-                                    onChange={(e) => setPlan(e.target.value)}>
+                                    onChange={handleChange}>
                                     <option value="">Select A Plan</option>
                                     <option value="1 Gbps">Fiber 1 Gbps</option>
                                     <option value="2 Gbps">Fiber 2 Gbps</option>
