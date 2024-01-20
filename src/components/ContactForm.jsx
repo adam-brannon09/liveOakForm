@@ -5,6 +5,8 @@ import { db } from "../firebase.config"
 
 
 
+
+
 function ContactForm() {
     // Set initial State
     // show alert is set to false until the form is submitted
@@ -61,6 +63,7 @@ function ContactForm() {
     
 
     return (
+        
         <>
             <form className="lof-blue"
                 onSubmit={handleSubmit}>
@@ -159,20 +162,22 @@ function ContactForm() {
 
                     </section>
                     {/* section 3 - textbox, biz/residental, plan */}
-                    <section className="flex flex-col ml-5 mt-8">
+                    <section className="flex flex-col ml-5 mt-9">
                         <span className="label-text text-white text-xl">How Can We Help?</span>
                         <textarea
                             name="message"
                             id="message"
                             cols="50"
                             rows="7"
+                            placeholder="How can we help?"
+                            className="p-1 "
                             value={message}
                             onChange={handleChange}
                         >
                         </textarea>
                         <br />
 
-                        <span className="label-text text-white text-xl mt-2">Business or Residential</span>
+                        <span className="label-text text-white text-xl">Business or Residential</span>
                         <select
                             id="businessOrResidential"
                             name="businessOrResidential"
@@ -243,13 +248,14 @@ function ContactForm() {
                     {/* submit btn */}
                 <section className="flex justify-center">
                     <button type="submit" 
-                    className="btn submit-btn lof-red text-white border-white rounded-tr-xl rounded-none mb-20 h-16 w-1/4 "
+                    className="btn submit-btn lof-red text-white border-white rounded-none mb-10 h-16 w-1/4 "
                     disabled={showAlert}
                     >Submit</button>
                 </section>
 
             </form>
         </>
+       
     )
 }
 

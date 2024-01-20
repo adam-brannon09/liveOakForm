@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	/* font-family: 'Roboto', sans-serif; */
+	font-family: 'Montserrat', sans-serif;
+}
+
 .lof-blue {
 	background-color: #161269;
 }
@@ -12,6 +17,13 @@
 
 .lof-blue-text {
 	color: #161269;
+}
+
+.input{
+	width: 500px;
+}
+.submit-btn {
+	border-top-right-radius: 28px;
 }
 
 .submit-btn:hover {
