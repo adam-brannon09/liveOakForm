@@ -45,7 +45,7 @@ No install required for the web-based version. To run the application locally, c
 
 ## Usage
 
-To use the web-based version simply navigate to the deployed application [URL]() and begin using the app in your browser.
+To use the web-based version simply navigate to the deployed application [URL](https://live-oak-form.vercel.app/) and begin using the app in your browser.
 
 
 ## Technologies
@@ -63,7 +63,7 @@ To use the web-based version simply navigate to the deployed application [URL]()
 
 <img src="./src/assets/images/formGif.gif" style="width:900px;height:auto">
 
-Follow me to the [Deployed Application]()
+Follow me to the [Deployed Application](https://live-oak-form.vercel.app/)
 
 
 ## Contributors
