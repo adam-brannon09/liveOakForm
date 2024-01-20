@@ -4,8 +4,7 @@ import Footer from "../components/Footer"
 
 function Form() {
     return (
-
-
+    
         <div>
             <Header/>
             <ContactForm />

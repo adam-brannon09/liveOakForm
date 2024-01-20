@@ -4,13 +4,13 @@ import Form from './pages/Form';
 
 function App() {
   return (
+    // added react router for future use
     <>
       <Router>
         <Routes>
           <Route path="/" element={<Form />} />
         </Routes>
       </Router>
-
     </>
   );
 }
