@@ -19,7 +19,7 @@ function ContactForm() {
         city: "",
         state: "",
         zipCode: "",
-        comment: "",
+        message: "",
         businessOrResidential: "",
         plan: ""
     })
@@ -33,7 +33,7 @@ function ContactForm() {
         city,
         state,
         zipCode,
-        comment,
+        message,
         businessOrResidential,
         plan
     } = formData
@@ -53,7 +53,7 @@ function ContactForm() {
           // add the form data copy to the database
           const docRef = await addDoc(collection(db, "leads"), formDataCopy)
             // clear the form
-          setFormData({...formData, firstName: "", lastName: "", email: "", phone: "", streetAddress: "", city: "", state: "", zipCode: "", comment: "", businessOrResidential: "", plan: ""})
+          setFormData({...formData, firstName: "", lastName: "", email: "", phone: "", streetAddress: "", city: "", state: "", zipCode: "", message: "", businessOrResidential: "", plan: ""})
           console.log("Document submitted successfully")
           // show the alert
           setShowAlert(true)
@@ -64,7 +64,8 @@ function ContactForm() {
         <>
             <form className="lof-blue"
                 onSubmit={handleSubmit}>
-                <div className="flex flex-wrap justify-center mt-20 ">
+                {/* container div for flex properties */}
+                <div className="flex flex-wrap justify-center mt-8 ">
                 {/* once the form is submitted the show alert component will appear.*/}
                 {showAlert && <AlertSuccess />} 
 
@@ -161,11 +162,11 @@ function ContactForm() {
                     <section className="flex flex-col ml-5 mt-8">
                         <span className="label-text text-white text-xl">How Can We Help?</span>
                         <textarea
-                            name="comment"
-                            id="comment"
+                            name="message"
+                            id="message"
                             cols="50"
                             rows="7"
-                            value={comment}
+                            value={message}
                             onChange={handleChange}
                         >
                         </textarea>
@@ -241,7 +242,10 @@ function ContactForm() {
                 </div>
                     {/* submit btn */}
                 <section className="flex justify-center">
-                    <button type="submit" className="btn lof-red text-white border-white rounded-tr-xl rounded-none mb-20 h-16 w-1/4 ">Submit</button>
+                    <button type="submit" 
+                    className="btn submit-btn lof-red text-white border-white rounded-tr-xl rounded-none mb-20 h-16 w-1/4 "
+                    disabled={showAlert}
+                    >Submit</button>
                 </section>
 
             </form>

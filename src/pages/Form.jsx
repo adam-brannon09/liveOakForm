@@ -1,15 +1,16 @@
-
-import ContactForm from "../components/ContactForm"
 import Header from "../components/Header"
+import ContactForm from "../components/ContactForm"
+import Footer from "../components/Footer"
 
-function form() {
+function Form() {
     return (
 
 
         <div>
             <Header/>
             <ContactForm />
+            <Footer />
         </div>
     )
 }
-export default form
+export default Form

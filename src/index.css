@@ -10,8 +10,16 @@
 	background-color: #d90d00;
 }
 
-.btn:hover {
+.lof-blue-text {
+	color: #161269;
+}
+
+.submit-btn:hover {
 	background-color: white;
 	color: #d90d00;
 	border: 1px solid #d90d00;
+}
+
+.acorn {
+	width: 50px;
 }
