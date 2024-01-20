@@ -13,6 +13,14 @@
 # Live Oak Contact Request Form
 
 ## Description
+Welcome to the Live Oak Fiber Contact Form – a user-friendly solution designed to facilitate seamless communication between potential customers and our team. This web application simplifies the process of capturing vital information for individuals and businesses interested in our services.
+
+Users can effortlessly input their details, including their name and contact information. Additionally, the form accommodates personalized messages, allowing individuals to convey specific preferences or inquiries. The flexibility extends to distinguishing between business and residential accounts, and users can express interest in a particular package or choose "Not Sure" for dedicated assistance from our sales representatives.
+
+Behind the scenes, the data collected is securely transmitted and stored in a Firestore database. This integration allows our sales manager to efficiently monitor and manage incoming requests. The captured information is then intelligently distributed to the relevant sales representatives, ensuring a prompt and personalized follow-up with potential clients.
+
+Make customer engagement a breeze and streamline your communication process with the Live Oak Fiber Contact Form. If you have any questions or need assistance in leveraging this powerful tool, feel free to reach out. Enhance your customer interactions and drive efficiency in managing inquiries with our intuitive and effective contact form.
+
 
 
 ## Quick Links
@@ -53,7 +61,7 @@ To use the web-based version simply navigate to the deployed application [URL]()
 ## Demo
 
 
-<img src="./src/assets/wd2.gif" style="width:900px;height:auto">
+<img src="./src/assets/images/formGif.gif" style="width:900px;height:auto">
 
 Follow me to the [Deployed Application]()
 
