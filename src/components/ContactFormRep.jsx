@@ -1,10 +1,13 @@
 import { useState} from "react"
+import { useParams } from "react-router-dom"
 import AlertSuccess from "./AlertSuccess"
 import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { db } from "../firebase.config"
 
-//This is the general purpose contact form that will send all lead info to the leads collection in firestore.
-function ContactForm() {
+// This form will take the parameters from the url and add the form data to the database. The parameters will be the sales reps name, 
+// which if it doesnt exist will establish a collection of leads in firestore, under the sales reps name.
+
+function ContactFormRep() {
     // Set initial State
     // show alert is set to false until the form is submitted
     const [showAlert, setShowAlert] = useState(false)
@@ -38,7 +41,8 @@ function ContactForm() {
     } = formData
 
     // get the sales rep from the url
-   
+    const {salesRep} = useParams();
+    console.log(salesRep)
     const handleChange = (e) => {
         // set the form data to the values of the form
       setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -51,8 +55,9 @@ function ContactForm() {
             ...formData,
             submittedAt: serverTimestamp()
           }
+          console.log(salesRep)
           // add the form data copy to the database
-          const docRef = await addDoc(collection(db, "leads" ), formDataCopy)
+          const docRef = await addDoc(collection(db, `${salesRep}`), formDataCopy)
             // clear the form
           setFormData({...formData, firstName: "", lastName: "", email: "", phone: "", streetAddress: "", city: "", state: "", zipCode: "", message: "", businessOrResidential: "", plan: ""})
           console.log("Document submitted successfully")
@@ -259,4 +264,4 @@ function ContactForm() {
 }
 
 
-export default ContactForm
+export default ContactFormRep
