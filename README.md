@@ -17,9 +17,7 @@ Welcome to the Live Oak Fiber Contact Form – a user-friendly solution designed
 
 Users can effortlessly input their details, including their name and contact information. Additionally, the form accommodates personalized messages, allowing individuals to convey specific preferences or inquiries. The flexibility extends to distinguishing between business and residential accounts, and users can express interest in a particular package or choose "Not Sure" for dedicated assistance from our sales representatives.
 
-Behind the scenes, the data collected is securely transmitted and stored in a Firestore database. This integration allows our sales manager to efficiently monitor and manage incoming requests. The captured information is then intelligently distributed to the relevant sales representatives, ensuring a prompt and personalized follow-up with potential clients.
-
-Make customer engagement a breeze and streamline your communication process with the Live Oak Fiber Contact Form. If you have any questions or need assistance in leveraging this powerful tool, feel free to reach out. Enhance your customer interactions and drive efficiency in managing inquiries with our intuitive and effective contact form.
+Behind the scenes, the data collected is securely transmitted and stored in a Firestore database. This integration allows our sales team to efficiently monitor and manage incoming requests. The captured information is then intelligently distributed to the relevant sales representatives, ensuring a prompt and personalized follow-up with potential clients.
 
 
 
@@ -46,7 +44,10 @@ No install required for the web-based version. To run the application locally, c
 ## Usage
 
 To use the web-based version simply navigate to the deployed application [URL](https://live-oak-form.vercel.app/) and begin using the app in your browser.
+ 
+ For general inquiries a prospective customer will fill out all required information on the form and click submit. The collected information is sent to a leads collection in the Firestore Database to later be viewed and assigned to the sales team by the Sales Manager.
 
+ The form has been updated with new functionality to allow for sales reps to receive inquiries from leads they work in the market. The url simply needs to be altered to use the rep's name as the endpoint, for example: www.liveoakform.com/repsName. This will send the captured information to a collection in the Firestore Database that the rep can view in their own personal [dashboard](https://github.com/adam-brannon09/lofmanagerdashboard). 
 
 ## Technologies
 
