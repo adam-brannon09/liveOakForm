@@ -246,6 +246,7 @@ function ContactForm() {
                 </div>
                     {/* submit btn */}
                 <section className="flex justify-center">
+                
                     <button type="submit" 
                     className="btn submit-btn lof-red text-white border-white rounded-none mb-10 h-16 w-1/4  max-[500px]:mt-6 max-[500px]:w-1/2"
                     disabled={showAlert}
