@@ -64,7 +64,7 @@ function ContactForm() {
     return (
         
         <>
-            <form className="lof-blue"
+            <form className="lof-blue max-w-s md:max-w-full mx-auto"
                 onSubmit={handleSubmit}>
                 {/* container div for flex properties */}
                 <div className="flex flex-wrap justify-center mt-8 ">
@@ -161,7 +161,7 @@ function ContactForm() {
 
                     </section>
                     {/* section 3 - textbox, biz/residental, plan */}
-                    <section className="flex flex-col ml-5 mt-9">
+                    <section className="flex flex-col ml-5 mt-9 shrink">
                         <span className="label-text text-white text-xl">How Can We Help?</span>
                         <textarea
                             name="message"
