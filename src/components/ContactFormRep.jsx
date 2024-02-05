@@ -1,5 +1,5 @@
 import { useState} from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import AlertSuccess from "./AlertSuccess"
 import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { db } from "../firebase.config"
@@ -39,10 +39,13 @@ function ContactFormRep() {
         businessOrResidential,
         plan
     } = formData
-
+    
+    
+    const validSalesReps = ["aaronPadgett", "bryanBennett", "barrettHibbett", "chrisWallace", "gabbyHuddleston", "travisSelski", "savannahMcquaig"]
     // get the sales rep from the url
     const {salesRep} = useParams();
-    console.log(salesRep)
+
+
     const handleChange = (e) => {
         // set the form data to the values of the form
       setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -56,6 +59,8 @@ function ContactFormRep() {
             submittedAt: serverTimestamp()
           }
           console.log(salesRep)
+            // if the sales rep is not in the valid sales reps array, redirect to the home page
+            if (validSalesReps.includes(salesRep)) {
           // add the form data copy to the database
           const docRef = await addDoc(collection(db, `${salesRep}`), formDataCopy)
             // clear the form
@@ -63,6 +68,15 @@ function ContactFormRep() {
           console.log("Document submitted successfully")
           // show the alert
           setShowAlert(true)
+            } else {
+                const docRef = await addDoc(collection(db, "leads"), formDataCopy)
+            // clear the form
+          setFormData({...formData, firstName: "", lastName: "", email: "", phone: "", streetAddress: "", city: "", state: "", zipCode: "", message: "", businessOrResidential: "", plan: ""})
+          console.log("Document submitted successfully")
+          // show the alert
+          setShowAlert(true)
+            }
+
   };
     
 
