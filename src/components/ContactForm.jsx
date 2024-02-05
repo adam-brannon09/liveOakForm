@@ -52,7 +52,7 @@ function ContactForm() {
             submittedAt: serverTimestamp()
           }
           // add the form data copy to the database
-          const docRef = await addDoc(collection(db, "leads" ), formDataCopy)
+          const docRef = await addDoc(collection(db, "newLeads" ), formDataCopy)
             // clear the form
           setFormData({...formData, firstName: "", lastName: "", email: "", phone: "", streetAddress: "", city: "", state: "", zipCode: "", message: "", businessOrResidential: "", plan: ""})
           console.log("Document submitted successfully")
