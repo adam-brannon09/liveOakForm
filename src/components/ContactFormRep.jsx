@@ -53,6 +53,13 @@ function ContactFormRep() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if (!validSalesReps.includes(salesRep)) {
+            // Sales rep is not valid, so prevent form submission
+            alert("Invalid url.");
+            console.error("Invalid sales representative endpoint. Form submission aborted.");
+            return;
+        }
         // set formData to the values of the form
           const formDataCopy = { 
             ...formData,

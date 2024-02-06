@@ -117,7 +117,7 @@ function ContactForm() {
                         />
                     </section>
                     {/* section 2 - address, city, state, zip */}
-                    <section className="flex flex-col ml-2 p-10 max-[500px]:mx-auto max-[500px]:p-0 ">
+                    <section className="flex flex-col ml-2 p-10 max-[500px]:mx-auto max-[500px]:p-0">
                         <span className="label-text text-white text-xl">Street Address</span>
                         <input type="text"
                             id="streetAddress"
