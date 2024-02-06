@@ -83,7 +83,7 @@ function ContactFormRep() {
     return (
         
         <>
-            <form className="lof-blue"
+            <form className="lof-blue max-[500px]:w-screen"
                 onSubmit={handleSubmit}>
                 {/* container div for flex properties */}
                 <div className="flex flex-wrap justify-center mt-8 ">
@@ -92,7 +92,7 @@ function ContactFormRep() {
 
                 {/* The form is split into 3 sections(columns) */}
                 {/* Section 1 - name, email, phone */}
-                    <section className="flex flex-col mr-2 p-10">
+                    <section className="flex flex-col mr-2 p-10 max-[500px]:mx-auto max-[500px]:mt-2">
                         <span className="label-text text-white text-xl">First Name</span>
                         <input type="text"
                             id="firstName"
@@ -136,7 +136,7 @@ function ContactFormRep() {
                         />
                     </section>
                     {/* section 2 - address, city, state, zip */}
-                    <section className="flex flex-col ml-2 p-10">
+                    <section className="flex flex-col ml-2 p-10 max-[500px]:mx-auto max-[500px]:p-0">
                         <span className="label-text text-white text-xl">Street Address</span>
                         <input type="text"
                             id="streetAddress"
@@ -180,7 +180,7 @@ function ContactFormRep() {
 
                     </section>
                     {/* section 3 - textbox, biz/residental, plan */}
-                    <section className="flex flex-col ml-5 mt-9">
+                    <section className="flex flex-col ml-5 mt-9 max-[500px]:w-11/12 max-[500px]:mx-auto max-[500px]:mt-0">
                         <span className="label-text text-white text-xl">How Can We Help?</span>
                         <textarea
                             name="message"
@@ -266,7 +266,7 @@ function ContactFormRep() {
                     {/* submit btn */}
                 <section className="flex justify-center">
                     <button type="submit" 
-                    className="btn submit-btn lof-red text-white border-white rounded-none mb-10 h-16 w-1/4 "
+                    className="btn submit-btn lof-red text-white border-white rounded-none mb-10 h-16 w-1/4 max-[500px]:mt-6 max-[500px]:w-1/2"
                     disabled={showAlert}
                     >Submit</button>
                 </section>
